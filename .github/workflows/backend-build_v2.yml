@@ -17,13 +17,16 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: 'gradle' 
 
-      - name: 3. ✨ Dockerfile 없이 도커 이미지 생성 (Buildpacks)
+      - name: 3. Gradle 8.7 고정 설치   
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
+
+      - name: 4. ✨ Dockerfile 없이 도커 이미지 생성 (Buildpacks)
         working-directory: ./backend
-        
         run: gradle bootBuildImage --imageName=my-magic-backend:latest
 
-      - name: 4. 생성된 Docker 이미지 확인
+      - name: 5. 생성된 Docker 이미지 확인
         # 정말로 Dockerfile 없이 이미지가 생겼는지 확인합니다.
         run: docker images
