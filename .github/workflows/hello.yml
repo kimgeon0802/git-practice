@@ -22,7 +22,7 @@ jobs:
         run: java -version
       
       - name: Gradle 버전 확인
-        run: ./gradlew --version
+        run: gradle --version
 
       - name: 3 step
         run: echo "${{ github.sha }} 님"
